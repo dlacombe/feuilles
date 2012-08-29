@@ -1,0 +1,41 @@
+<h1>Listing feuilles</h1>
+
+<table>
+
+  <th>Client</th>
+  <tr>
+    <th>No de feuille</th>
+    <th>Date</th>
+    <th>Debut</th>
+    <th>Fin</th>
+    <th>Travail effectuer</th>
+    <th>Surtemps</th>
+    <th>Voyagement</th>
+    <th>Nc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+   <% @clients.each do |client| %>
+
+    <td><%= content_tag('pre',client.nom) %></td>
+    <% client.feuilles.each do |feuille| %>
+     <tr>
+     <td><%= feuille.debut.strftime("%Y/%m/%d") %></td>
+     <td><%= feuille.debut.strftime("%H:%M") %></td>
+     <td><%= feuille.fin.strftime("%H:%M") %></td>
+     <td><%= content_tag('pre',feuille.travail_effectuer) %></td>
+     <td><%= feuille.surtemps %></td>
+     <td><%= feuille.voyagement %></td>
+     <td><%= feuille.nc %></td>
+     <td><%= link_to 'Voir', feuille %></td>
+     <td><%= link_to 'Editer', edit_feuille_path(feuille) %></td>
+     <td><%= link_to 'Détruire', feuille, confirm: 'Êtes-vous certain?', method: :delete %></td>
+    </tr>
+  <% end %>
+ <% end %>
+</table>
+<br />
+
+<%= link_to 'Nouvelle Feuille', new_feuille_path %>

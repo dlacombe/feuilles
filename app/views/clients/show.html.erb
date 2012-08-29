@@ -1,0 +1,38 @@
+<p id="cli_name"><%= @client.nom %>
+<p id="text"><b>:id du Client = <%= @client.id %>  **Attention, il ne peut être modifié** = </b>
+
+</p>
+
+<p id="text"><b>Code du Client:</b>
+  <%= @client.code %>
+</p>
+
+<p id="text"><b>Adresse:</b>
+  <%= @client.adresse %>
+
+<b>, Ville:</b>
+  <%= @client.ville %>
+</p>
+<p id="text"><b>Province:</b>
+  <%= @client.province %>
+  <b>, Pays:</b>
+  <%= @client.pays %>
+
+  <b>, Code Postal:</b>
+  <%= @client.code_postal %>
+</p>
+
+<p id="text"><p id="text">  <b>Téléphone:</b>
+  <%= @client.telephone %>
+</p>
+
+<p id="text"{text-transform:lowercase;}>  <b>Email:</b>
+   <%= @client.email %>
+</p>
+
+<%= link_to 'Modifier le client', edit_client_path(@client) %>
+
+<%= link_to 'Retour au feuilles du client', show_feuilles_client_path(@client) %>
+<br />
+<br />
+<%= link_to 'Menu des Clients', clients_path %>

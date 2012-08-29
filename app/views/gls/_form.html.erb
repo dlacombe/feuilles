@@ -1,0 +1,41 @@
+<%= form_for(@gl) do |f| %>
+  <% if @gl.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gl.errors.count, "error") %> prohibited this gl from being saved:</h2>
+
+      <ul>
+      <% @gl.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :nom %><br />
+    <%= f.text_area :nom %>
+  </div>
+  <div class="field">
+    <%= f.label :no_gl %><br />
+    <%= f.number_field :no_gl %>
+  </div>
+  <div class="field">
+    <%= f.label :debit %><br />
+    <%= f.text_field :debit %>
+  </div>
+  <div class="field">
+    <%= f.label :credit %><br />
+    <%= f.text_field :credit %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Créer le numéro de GL" %>
+  </div>
+<% end %>

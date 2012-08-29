@@ -1,0 +1,50 @@
+<%= form_for(@feuille) do |f| %>
+  <% if @feuille.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feuille.errors.count, "error") %> prohibited this feuille from being saved:</h2>
+
+      <ul>
+      <% @feuille.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :client_id %><br />
+    <%= collection_select(:feuille, :client_id, Client.all, :id, :nom) %>
+  </div>
+  <div class="field">
+    <%= f.label :debut %><br />
+    <%= f.datetime_select :debut %>
+  </div>
+  <div class="field">
+    <%= f.label :fin %><br />
+    <%= f.datetime_select :fin %>
+  </div>
+  <div class="field">
+    <%= f.label :travail_effectuer %><br />
+    <%= f.text_area :travail_effectuer %>
+  </div>
+  <div class="field">
+    <%= f.label :surtemps %><br />
+    <%= f.text_field :surtemps %>
+  </div>
+  <div class="field">
+    <%= f.label :voyagement %><br />
+    <%= f.text_field :voyagement %>
+  </div>
+  <div class="field">
+    <%= f.label :nc %><br />
+    <%= f.text_field :nc %>
+  </div>
+    <% if "#{request.fullpath}" == "/feuilles/new" %>
+        <div class="actions">
+          <%= f.submit "Créer la feuille" %>
+        </div>
+    <% else %>
+        <div class="actions">
+          <%= f.submit "Mise à jour de la feuille" %>
+        </div>
+    <% end %>
+<% end %>

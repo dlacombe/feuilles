@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title><%= @titre_de_la_fenetre %></title>
+  Feuilles de temps par Daniel Lacombe 2012
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

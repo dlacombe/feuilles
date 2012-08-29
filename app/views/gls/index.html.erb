@@ -1,0 +1,33 @@
+<h1>Listing gls</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Type</th>
+    <th>Nom</th>
+    <th>No gl</th>
+    <th>Debit</th>
+    <th>Credit</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gls.each do |gl| %>
+  <tr>
+    <td><%= gl.date %></td>
+    <td><%= gl.type %></td>
+    <td><%= gl.nom %></td>
+    <td><%= gl.no_gl %></td>
+    <td><%= gl.debit %></td>
+    <td><%= gl.credit %></td>
+    <td><%= link_to 'Voir', gl %></td>
+    <td><%= link_to 'Editer', edit_gl_path(gl) %></td>
+    <td><%= link_to 'Détruire', gl, confirm: 'Êtes-vous certain?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Gl', new_gl_path %>

@@ -1,0 +1,25 @@
+<h1>Liste des clients 'clients index'</h1>
+<% if notice.nil? == false %>
+    <p id="notice"><%= notice %></p>
+<% end %>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  <th></th>
+   <% @clients.each do |client| %>
+     <tr>
+        <td><%= link_to content_tag('pre',"#{client.nom}  (#{pluralize(client.feuilles.count, "Feuille") if client.feuilles.count != 0})"), show_feuilles_client_path(client) %></td>
+        <td><%= link_to "Nouvelles feuille de temps", new_feuille_client_path(client), :target => "_blank" %></td>
+     </tr>
+     <td><%=  %></td>
+  <% end %>
+
+</table>
+<br />
+
+<%= link_to 'Nouveau Client', new_client_path %>
+<br />
+<%= link_to 'Menu des Feuilles de temps des Clients', feuilles_path %>
+

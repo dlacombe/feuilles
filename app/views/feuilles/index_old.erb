@@ -1,0 +1,20 @@
+<h1>Liste des feuilles</h1>
+<table>
+  <% @clients.each do |client| %>
+      <% if not client.feuilles.empty? %>
+          <td><%= content_tag('pre',client.nom) %></td>
+          <% client.feuilles.each do |feuille| %>
+              <tr>
+                <td><%= link_to feuille.debut.strftime("%Y/%m/%d"), edit_feuille_client_path(client,feuille) %></td>
+                <td><%= content_tag('pre',feuille.travail_effectuer) %></td>
+                <td><%= link_to 'Détruire', feuille, confirm: 'Êtes-vous certain?', method: :delete %></td>
+              </tr>
+          <% end %>
+      <% end %>
+  <% end %>
+</table>
+<br />
+<%= link_to 'Nouvelle Feuille de temps', new_feuille_path %>
+<br />
+<br />
+<%= link_to 'Menu des Clients', clients_path %>

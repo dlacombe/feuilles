@@ -1,0 +1,60 @@
+<h3>Liste des feuilles du Client</h3>
+<% if notice.nil? == false %>
+    <p id="notice"><%= notice %></p>
+<% end %>
+<table border="0">
+  <% if not @client.feuilles.empty? %>
+      <% @total = 0.00 %>
+      <% @nc = 0.00 %>
+      <% @voyagement = 0.00 %>
+      <% @suretemps = 0.00 %>
+      <h2><%= link_to content_tag('pre',@client.nom), client_path %></h2>
+      <% @client.feuilles.each do |feuille| %>
+          <% total_des_feuilles(feuille) %>
+          <% total_de_la_feuille = ((@fin - @debut) + feuille.surtemps - feuille.nc + feuille.voyagement) %>
+          <boddy>
+            <tr>
+                 <td><%= link_to feuille.debut.strftime("%Y/%m/%d"), edit_feuille_client_path(@client,feuille) %></td>
+            </tr>
+            <tr id="text">
+                <td><%= feuille.travail_effectuer %></td>
+                <td id="notice2"><%= link_to '->Détruire<-', feuille, confirm: 'Êtes-vous certain?', method: :delete %></td>
+            </tr>
+            <td id="feuilles"><%= "Temps:#{'%2.2f' % [@total_de_la_feuille]},"%>
+              <%= "Surtemps: #{'%2.2f' % [feuille.surtemps]}," if feuille.surtemps > 0.00 %>
+              <%= "N/C: #{'%2.2f' % [feuille.nc]}," if feuille.nc > 0.00%>
+              <%= "Voyagement: #{'%2.2f' % [feuille.voyagement]},"if feuille.voyagement > 0.00 %>
+              <%= "Total:$#{'%2.2f' % [@total_de_la_feuille * @client.taux_horaire]}" %>
+            </td>
+          </boddy>
+      <% end %>
+  <% end %>
+</table>
+<br />
+<td><%= content_tag('pre',"Cumulatif des feuilles de temps du client") %></td>
+<p id="cumulatif">
+
+    <br />
+    <span class="temps"><%= "temps régulier........" + ": #{'%2.2f' % [@total]}".align_by_last(".:00:00") %></span>
+    <br />
+    <span class="temps"><%= "suretemps........" + ": #{'%2.2f' % [@suretemps]}".align_by_last(".:00:00") %></span>
+    <br />
+    <span class="temps"><%= "n/c........" + ": #{'%2.2f' % [@nc]}".align_by_last(".:00:00") %></span>
+    <br />
+    <span class="temps"><%= "voyagement......." + ": #{'%2.2f' % [@voyagement]}".align_by_last(".:00:00") %></span>
+    <br />
+</p>
+
+<p id="grand_total">
+<td>total du temps facturé..:<%= " #{'%2.2f' % [@total + @suretemps - @nc + @voyagement]}" %>
+  à $<%= @client.taux_horaire %>/hrs
+    <%= " = $#{'%2.2f' % [(@total + @suretemps - @nc + @voyagement)*@client.taux_horaire]}" %></td>
+<br />  <br />
+</p>
+<%= link_to 'Nouvelle Feuille de temps',new_feuille_client_path(@client.id) %>
+<br />
+<br />
+<%= link_to 'Menu des Clients', clients_path %>
+<br />
+<br />
+<%= link_to 'Menu des Feuilles de Clients', feuilles_path %>

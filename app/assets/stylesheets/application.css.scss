@@ -1,0 +1,112 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+#banner {
+  background: #9c9;
+  padding: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+
+  color: #282;
+  text-align: center;
+  img {
+    float: left;
+  }
+}
+#cli_name {
+  background: #1417cc;
+  padding: 10px;
+  border: 5px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+
+  color: rgba(253, 255, 185, 0.98);
+  text-align: center;
+  img {
+    float: left;
+  }
+}
+#text {
+  width: 20%;
+  height: 50px;
+  overflow: scroll;
+  font: small 20px/10px "Times New Roman", serif;
+  background: #c3cec8;
+
+  text-align: left;
+}
+#notice {
+ color: #000 !important;
+  border: 2px solid red;
+  background-color: #f0f0f0;
+  font: small-caps 20px/20px "Times New Roman", serif;
+  text-align: center
+}
+#notice2 {
+  color: #000 !important;
+  border: 2px solid red;
+  background-color: #f0f0f0;
+  font: small-caps 10px/10px "Times New Roman", serif;
+  text-align: center
+}
+#columns {
+  background: #228822;
+  #main {
+    margin-left: 10em;
+    padding: 1em;
+    background: white;
+  }
+  #side {
+    float: left;
+
+    width: 13em;
+    background: #141;
+    ul {
+      padding: 0;
+      li {
+        list-style: none;
+        a {
+          color: #bfb;
+          font-size: small;
+        }
+      }
+    }
+  }
+}
+#cumulatif {
+  width: 20%;
+  height: 100px;
+  vertical-align: top;
+  background: #fdffb9;
+  font: small 20px/20px "Times New Roman", serif;
+  text-align: right;
+}
+#grand_total {
+  color: #000000;
+  text-align: center;
+  border: 1px solid red;
+  font: small-caps 20px/20px "Times New Roman", serif;
+}
+#feuilles {
+
+  background: #678870;
+  text-align: right;
+  color: #ffffff;
+  font: small 20px/20px "Times New Roman", serif;
+}
+#attention {
+  text-decoration-color: rgba(145, 255, 245, 0);
+  background: #ff2f19;
+
+  font: small-caps 20px/20px "Times New Roman", serif;
+}
+

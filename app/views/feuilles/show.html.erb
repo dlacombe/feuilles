@@ -1,0 +1,41 @@
+<p id="notice"><%= @nom_client %></p>
+
+
+<p>
+  <b>Feuille de temps no:</b>
+  <%= @feuille.id %>
+</p>
+<p>
+  <b>Debut:</b>
+  <%= @feuille.debut.to_metric.round_metric('<') %>
+</p>
+
+<p>
+  <b>Fin:</b>
+  <%= @feuille.fin.to_metric.round_metric('>') %>
+</p>
+
+<p>
+  <b>Travail effectuer:</b>
+  <%= @feuille.travail_effectuer %>
+</p>
+
+<p>
+  <b>Surtemps:</b>
+  <%= @feuille.surtemps %>
+</p>
+
+<p>
+  <b>Voyagement:</b>
+  <%= @feuille.voyagement %>
+</p>
+
+<p>
+  <b>Nc:</b>
+  <%= @feuille.nc %>
+</p>
+
+
+<%= link_to 'Éditer', edit_feuille_path(@feuille) %> |
+<%= link_to 'Retour', show_feuilles_client_path(@feuille.client_id) %> |
+<%= link_to 'Client', client_path %>
