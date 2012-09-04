@@ -1,5 +1,8 @@
+<% if notice.nil? == false %>
+    <p id="notice"><%= notice %></p>
+<% end %>
 <p id="cli_name"><%= @client.nom %>
-<p id="text"><b>:id du Client = <%= @client.id %>  **Attention, il ne peut être modifié** = </b>
+<p id="text"><b>Numéro d'identification du Client= <%= @client.id %></b>
 
 </p>
 
@@ -22,14 +25,17 @@
   <%= @client.code_postal %>
 </p>
 
-<p id="text"><p id="text">  <b>Téléphone:</b>
+<p id="text"><b>Téléphone:</b>
   <%= @client.telephone %>
 </p>
 
-<p id="text"{text-transform:lowercase;}>  <b>Email:</b>
+<p id="text"><b>Email:</b>
    <%= @client.email %>
 </p>
-
+<p id="text"><b>Taux Horaire</b>
+<%= @client.taux_horaire %>
+</p>
+<p id="text">  </p>
 <%= link_to 'Modifier le client', edit_client_path(@client) %>
 
 <%= link_to 'Retour au feuilles du client', show_feuilles_client_path(@client) %>
