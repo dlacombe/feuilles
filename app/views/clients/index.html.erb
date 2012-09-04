@@ -1,4 +1,4 @@
-<h1>Liste des clients 'clients index'</h1>
+<h3>Liste des clients</h3>
 <% if notice.nil? == false %>
     <p id="notice"><%= notice %></p>
 <% end %>
@@ -10,8 +10,9 @@
   <th></th>
    <% @clients.each do |client| %>
      <tr>
-        <td><%= link_to content_tag('pre',"#{client.nom}  (#{pluralize(client.feuilles.count, "Feuille") if client.feuilles.count != 0})"), show_feuilles_client_path(client) %></td>
-        <td><%= link_to "Nouvelles feuille de temps", new_feuille_client_path(client), :target => "_blank" %></td>
+        <!--<td><%= link_to content_tag('pre',"#{client.nom}  (#{pluralize(client.feuilles.count, "Feuille") if client.feuilles.count != 0})"), show_feuilles_client_path(client) %></td>-->
+        <td id="text"><%= link_to "#{client.nom}  (#{pluralize(client.feuilles.count, "Feuille") if client.feuilles.count != 0})", show_feuilles_client_path(client) %></td>
+        <td id="liste_client"><%= link_to "Nouvelles feuille de temps", new_feuille_client_path(client), :target => "_blank" %></td>
      </tr>
      <td><%=  %></td>
   <% end %>
